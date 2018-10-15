@@ -27,5 +27,4 @@ class CoopController extends Controller
 		return view('contato');
 	}
 
-
 }

@@ -1,16 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Newsbit</title>
+	<title>COOPERATIVA</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
-	
-	<!-- Stylesheets -->
-	
 	<link rel="icon" href="images/cooperativa.ico" type="image/x-icon" />
 	
 	<!-- Stylesheets -->
@@ -30,16 +27,35 @@
 			<div class="container">	
 				<div class="oflow-hidden color-ash font-9 text-sm-center ptb-sm-5">
 				
-				<br>
+					<ul class="float-left float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-10">
+
+					</ul>
+					<ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5">
+						<div class="flex-center position-ref full-height">
+            				@if (Route::has('login'))
+                				<div class="top-right links">
+                    				@if (Auth::check())
+                        				<a href="{{ url('/home') }}">Início</a>
+                    				@else
+                        				<a href="{{ url('/login') }}">Entrar</a>
+                        				<br><a href="{{ url('/register') }}">Cadastre-se</a>
+                    				@endif
+                				</div>
+            				@endif
+
+					</ul>
 					
 				</div><!-- top-menu -->
 			</div><!-- container -->
 		</div><!-- bg-191 -->
+
+
 		
 		<div class="container">
-			<a class="logo" href="index.html"><img src="images/cooperativa.jpg" alt="Logo"></a>
+			<a class="logo"><img src="images/cooperativa.jpg" alt="Logo"></a>
+
 			
-			
+			<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
 			
 			<ul class="main-menu" id="main-menu">
 				<li><a href="{{ url('/') }}">NOTÍCIAS</a></li>
@@ -48,24 +64,34 @@
 				<li><a href="{{ url('/quemsomos') }}">QUEM SOMOS</a></li>
 				<li><a href="{{ url('/contato') }}">CONTATO</a></li>
 			</ul>
-
 			<div class="clearfix"></div>
-		</div><!-- container -->
 	</header>
-	
-	
-	<section>
-		<div class="container">
-			<h2 class="mt-30"><b>Quem somos</b></h2>
 
-			<p class="pt-30" align="justify">O Serviço Nacional de Aprendizagem do Cooperativismo (SESCOOP RN), criado em 1999, faz parte do denominado “Sistema S” e integra o Sistema OCB, cabendo-lhe organizar, administrar e executar</p>
+		@foreach ($noticias as $obj)
+			
+			<div class="card">
+				<div class="card-header">
+					<h3>
+						<a href="{{route('noticia', ['id'=>$obj->id])}}">
+							{{$obj->titulo}}		
+						</a>
 
-			<p class="pt-30" align="justify">
-			Nesse sentido, as ações do Sescoop para o fortalecimento das cooperativas englobam capacitação, valorização e melhor aproveitamento dos cooperados e empregados. Assim, a entidade busca patamares mais elevados de inovação e excelência, favorecendo a competitividade dos produtos e serviços desses empreendimentos.</p>
-									
-		</div><!-- container -->
-	</section>
+					</h3>
+				</div>
+				<div class="card-body">
+					<p>
+						{{$obj->descricao}}
+					</p>
+				</div>
+			</div>
+
+			<br>
+			<br>
+			<br>
+		@endforeach
 	
+	
+	<br><br><br><br>
 	
 	
 	<footer class="bg-191 color-ccc">
@@ -76,7 +102,6 @@
 					<div class="h-80 pos-relative"><img class="opacty-1 h-100 w-auto" src="images/map.png" alt=""></div>
 				</div>
 				<div class="row">
-				
 					<div class="col-sm-4">
 						<br><br><br><br><br><br><br>
 					</div><!-- col-md-4 -->
@@ -88,16 +113,19 @@
 					<div class="col-sm-4">
 						<br><br><br><br><br><br><br>
 					</div><!-- col-md-4 -->
+					
 					
 				</div><!-- row -->
 			</div><!-- ptb-50 -->
 			
 			<div class="brdr-ash-1 opacty-2"></div>
-			
+				
+			</div><!-- oflow-hidden -->
 		</div><!-- container -->
 	</footer>
 	
 	<!-- SCIPTS -->
+	
 	<script type="text/javascript" src="<?php echo asset('js/jquery-3.2.1.min.js')?>"></script>
 	
 	<script type="text/javascript" src="<?php echo asset('js/tether.min.js')?>"></script>
@@ -105,5 +133,6 @@
 	<script type="text/javascript" src="<?php echo asset('js/bootstrap.js')?>"></script>
 	
 	<script type="text/javascript" src="<?php echo asset('js/scripts.js')?>"></script>
+	
 </body>
 </html>

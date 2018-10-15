@@ -88,6 +88,7 @@
                     <a href="{{ url('/historia') }}">História</a>
                     <a href="{{ url('/quemsomos') }}">Quem Somos</a>
                     <a href="{{ url('/contato') }}">Contato</a>
+                    <a href="{{ url('/inicio') }}">Inicio</a>
                 </div>
             </div>
         </div>

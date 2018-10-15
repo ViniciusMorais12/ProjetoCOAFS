@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatCooperativa extends Migration
+class CreateCriarNoticias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatCooperativa extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });    
+        Schema::create('noticias', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('titulo');
+            $table->string('descricao');
+            $table->longtext('texto');
+        });
     }
 
     /**
@@ -27,6 +28,6 @@ class CreatCooperativa extends Migration
      */
     public function down()
     {
-        Shema::drop('users');
+        Schema::dropIfExists('noticias');
     }
 }

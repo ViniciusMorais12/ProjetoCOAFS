@@ -11,16 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/quemsomos','CoopController@quemsomos');
 Route::get('/historia', 'CoopController@historia');
 Route::get('/comosurge', 'CoopController@comosurge');
 Route::get('/noticias', 'CoopController@noticias');
 Route::get('/contato', 'CoopController@contato');
 
+Route::get('/show/{id}', 'noticiacontroller@show')->name('noticia');
+
+Route::get('/criar', 'noticiacontroller@create')->name('criar_noticia');
+
+Route::post('/store', 'noticiacontroller@store')->name('salvar_noticia');
+
+
+Route::get('/', 'noticiacontroller@index')->name('noticias');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
