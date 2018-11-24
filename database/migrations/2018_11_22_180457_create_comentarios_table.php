@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCriarNoticias extends Migration
+class CreateComentariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateCriarNoticias extends Migration
      */
     public function up()
     {
-        Schema::create('noticias', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
-            $table->string('descricao')->nullable(true);
-            $table->longtext('texto');
-            $table->string('fotoname');
-            $table->string('fototype');
-            $table->bigInteger('fotosize');
+            $table->text('text');
             $table->integer('usuario');
+            $table->integer('noticia');
             $table->foreign('usuario')->references('id')->on('users');
+            $table->foreign('noticia')->references('id')->on('noticias');
         });
     }
 
@@ -33,6 +30,6 @@ class CreateCriarNoticias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('comentarios');
     }
 }

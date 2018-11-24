@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'created_at', 'updated_at'
     ];
 
     /**
@@ -27,9 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function noticia()
+    public function noticias()
     {
         // hasOne(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
-        return $this->hasOne(noticias::class, 'id');
+        return $this->hasMany(noticia::class, 'usuario', 'id');
+    }
+
+    public function comentarios()
+    {
+        // hasOne(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
+        return $this->hasMany(Comentario::class, 'usuario', 'id');
     }
 }

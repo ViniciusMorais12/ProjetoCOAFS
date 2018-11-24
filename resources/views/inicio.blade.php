@@ -67,29 +67,30 @@
 			<div class="clearfix"></div>
 	</header>
 
-		@foreach ($noticias as $obj)
-			
-			<div class="card">
-				<div class="card-header">
-					<h3>
-						<a href="{{route('noticia', ['id'=>$obj->id])}}">
-							{{$obj->titulo}}		
-						</a>
+	<div class="container">
+		<div class="row">
+			@foreach ($noticias as $obj)
 
-					</h3>
-				</div>
-				<div class="card-body">
-					<p>
-						{{$obj->descricao}}
-					</p>
-				</div>
+			<div class="col-4" style="margin-bottom: 15px">
+				<a href="{{route('noticia', ['id'=>$obj->id])}}">
+					<div class="card">
+						<img src="{{ asset('img/'.$obj->fotoname) }}">
+						<div class="card-header">
+							<h3>
+								{{$obj->titulo}}
+							</h3>
+						</div>
+						<div class="card-body" style="padding: 15px">
+							<p>
+								{{$obj->descricao}}
+							</p>
+						</div>
+					</div>
+				</a>
 			</div>
-
-			<br>
-			<br>
-			<br>
-		@endforeach
-	
+			@endforeach
+		</div>
+	</div>	
 	
 	<br><br><br><br>
 	

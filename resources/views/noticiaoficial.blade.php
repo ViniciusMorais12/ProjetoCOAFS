@@ -53,9 +53,8 @@
 	<section>
 		<div class="container">
 			<div class="row">
-			
 				<div class="col-md-12 col-lg-8">
-					<img src="images/slider-1-1200x900.jpg" alt="">
+					<img src="{{ asset('img/'.$noticia->fotoname) }}">
 					<h3 class="mt-30" align="justify"><b>{{$noticia->titulo}}</b></h3>
 					
 					<p class="mtb-15" align="justify">{{$noticia->texto}}</p>
@@ -66,10 +65,35 @@
 				
 			</div><!-- row -->
 
+			<h2 style="margin-top: 30px">COMENTÁRIOS</h2>
+			<ul>
+				@foreach($comentarios as $obj)
+				<li style="display: block; margin-bottom: 10px">
+					<strong><h4>{{ $obj->usuario }}</h4></strong>
+					{{ $obj->text }}
+				</li>
+				@endforeach
+			</ul>
+
+			<form style="margin-top: 50px" class="form-block form-bold form-mb-20 form-h-35 form-brdr-b-grey pr-50 pr-sm-0" method="POST" action="{{route('comentar')}}">
+	            {!! csrf_field() !!}
+	            
+				<input type="hidden" name="noticiaid" value="{{ $noticia->id }}">
+
+	            <div class="row">
+	            	
+	            	<div class="col-sm-12">
+	                    <div class="pos-relative pr-80">
+	                        <h4><b>Poste um comentário</b></h4>
+	                        <textarea name="comentario"></textarea>
+	                        <button class="abs-br font-20 plr-15 btn-fill-primary" type="submit">Criar</button>
+	                    </div><!-- pos-relative -->
+	                </div><!-- col-sm-6 -->
+	                
+	            </div><!-- row -->
+	        </form>
+
 		</div><!-- container -->
-
-
-
 
 	</section>
 

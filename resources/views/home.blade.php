@@ -60,7 +60,7 @@
                     
                         <div class="col-sm-12 col-md-8">
                             <h3><b>Criar Noticias</b></h3>
-                            <form class="form-block form-bold form-mb-20 form-h-35 form-brdr-b-grey pr-50 pr-sm-0" method="POST" action="{{route('salvar_noticia')}}">
+                            <form class="form-block form-bold form-mb-20 form-h-35 form-brdr-b-grey pr-50 pr-sm-0" method="POST" enctype="multipart/form-data" action="{{route('salvar_noticia')}}">
                                 {!! csrf_field() !!}
                                 <div class="row">
                                 
@@ -84,9 +84,17 @@
                                             <h4><b>Texto</b></h4>
                                             <textarea  name="texto" > </textarea>
                                             <br><br><br>
-                                            <button class="abs-br font-20 plr-15 btn-fill-primary" type="submit">Criar</button>
                                         </div><!-- pos-relative -->
                                     </div><!-- col-sm-6 -->
+
+                                    <div class="col-sm-12">
+                                        <div class="pos-relative pr-80">
+                                            <h4><b>Foto</b></h4>
+                                            <input type="file" name="foto" required="true"/>
+                                            <br><br><br>
+                                            <button class="abs-br font-20 plr-15 btn-fill-primary" type="submit">Criar</button>
+                                        </div><!-- pos-relative -->
+                                    </div>
                                     
                                 </div><!-- row -->
                             </form>
