@@ -23,7 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        if (\Auth::user()->admin){
+            return view ('home');
+        }
+        else{
+            return redirect(route('noticias'));
+        }
+        
     }
     public function logout() {
         \Auth::logout();
